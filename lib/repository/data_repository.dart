@@ -19,10 +19,9 @@ class DataRepository {
         endpoint: Endpoint.geocode, param: param);
   }
 
-  Future<Restaurant> restaurantsDetailsAPI(String resId) async {
+  Future<Restaurant> restaurantsDetailsAPI(String restaurantId) async {
     var param = HttpParam.body();
-    param.add("res_id", resId);
-
+    param.add("res_id", restaurantId);
     return await apiService.getRestaurantDetails(
         endpoint: Endpoint.restaurant, param: param);
   }

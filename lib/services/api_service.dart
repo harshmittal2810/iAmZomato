@@ -19,15 +19,12 @@ class APIService {
     var query = param == null ? "" : param.toQuery();
     var fullURL = uri.toString() + query;
 
-    print("request for the api $fullURL");
-    print("the api key is ${api.apiKey}");
     try {
       var response =
           await http.get(fullURL, headers: {'user-key': '${api.apiKey}'});
       print(
           "the response for the api $fullURL  is ${json.decode(response.body)}");
       if (response.statusCode == 200) {
-        print("<<<<the response code is ${response.statusCode}>>>>");
         final data = json.decode(response.body);
         return (data['nearby_restaurants'] as List).map((e) {
           return NearbyRestaurants.fromJson(e);
@@ -35,7 +32,6 @@ class APIService {
       } else {
         print(
             'Request $fullURL failed\nResponse: ${response.statusCode} ${response.reasonPhrase}');
-
         throw Exception('Error getting restaurants');
       }
     } catch (e) {
@@ -50,16 +46,12 @@ class APIService {
     var query = param == null ? "" : param.toQuery();
     var fullURL = uri.toString() + query;
 
-    print("request for the api $fullURL");
-    print("the api key is ${api.apiKey}");
-
     try {
       var response =
           await http.get(fullURL, headers: {'user-key': '${api.apiKey}'});
       print(
           "the response for the api $fullURL  is ${json.decode(response.body)}");
       if (response.statusCode == 200) {
-        print("<<<<the response code is ${response.statusCode}>>>>");
         final data = json.decode(response.body);
         return Restaurant.fromJson(data);
       } else {
