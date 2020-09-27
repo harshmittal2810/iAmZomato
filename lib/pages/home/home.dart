@@ -37,8 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
       (locationData) {
         _lat = locationData.latitude;
         _lon = locationData.longitude;
-        _lat = 19.0760;
-        _lon = 72.8777;
+        // _lat = 19.0760;
+        // _lon = 72.8777;
         if ((_lat != null) && (_lon != null)) {
           getNearbyRestaurants();
         }
